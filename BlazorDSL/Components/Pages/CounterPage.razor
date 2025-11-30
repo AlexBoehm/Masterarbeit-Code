@@ -1,3 +1,7 @@
 ﻿@page "/counter"
 <h1>Counter</h1>
-<Counter />
+<Counter>
+    <CurrentCountDisplay Context="counter">
+        <p>current count: @counter</p>
+    </CurrentCountDisplay >
+</Counter>

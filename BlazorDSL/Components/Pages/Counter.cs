@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
+using static BlazorDSL.HTML;
 
 [Route("/counter")]
 public partial class Counter : ComponentBase
@@ -12,13 +13,13 @@ public partial class Counter : ComponentBase
         builder
             .h1("Counter")
             .div([
-                new KeyValuePair<string, object>("class", "box")],
+                Attribute("class", "box")],
                 inner =>
                     inner
                     .p("Current count: " + currentCount)
                     .button([
-                        new KeyValuePair<string, object>("class", "btn btn-primary"),
-                        new KeyValuePair<string, object>(
+                        Attribute("class", "btn btn-primary"),
+                        Attribute(
                             "onclick",
                             EventCallback.Factory.Create<MouseEventArgs>(
                                 this,

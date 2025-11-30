@@ -1,5 +1,6 @@
 # List of Attributes for HTML Tags
 # Source: https://html.spec.whatwg.org/multipage/indices.html#attributes-3
+# new Set([...document.querySelectorAll("#attributes-1 th > code")].map(a => a.textContent))
 
 abbr
 accept

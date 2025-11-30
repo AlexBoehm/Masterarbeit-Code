@@ -10,8 +10,12 @@ public partial class Counter : WebComponent
         div(
             h1("counter"),
             div(
+                [className("box")],
                 p("Current Count: " + currentCount),
-                button("Click me")
+                button(
+                    [className("btn btn-primary")],
+                    "Click me"
+                )
             )
         );
 

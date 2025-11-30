@@ -22,6 +22,12 @@ public class TagNode : Node {
         Attributes = _emptyAttributes;
     }
 
+    public TagNode(string tag, Attribute[] attributes, params Node[] inner) {
+        Tag = tag;
+        Inner = inner;
+        Attributes = attributes;
+    }
+
     public TagNode(string tag, params Node[] inner) {
         Tag = tag;
         Inner = inner;

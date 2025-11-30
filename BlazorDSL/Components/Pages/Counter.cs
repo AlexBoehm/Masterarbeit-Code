@@ -10,7 +10,8 @@ public partial class Counter : WebComponent
         div(
             h1("counter"),
             Component<Greeting>(
-                [parameter("Name", "Max Mustermann")]
+                [parameter("Name", "Max Mustermann")
+                ,templateParameter<string>("Message", name => text("Hello, " + name))]
             ),
             div(
                 [className("box")],

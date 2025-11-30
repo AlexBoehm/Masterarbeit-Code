@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorDSL;
@@ -39,6 +40,41 @@ static class Html {
 
     public static Attribute parameter(string name, object value)
         => new Attribute(name, value);
+
+    #endregion
+
+    #region templateParameter
+
+    public static Attribute templateParameter(string key, params Node[] template)
+        => new Attribute(
+                key,
+            (RenderFragment)(
+                (RenderTreeBuilder builder) => {
+                    Renderer.Render(builder, new ArrayNode(template));
+                }
+            )
+        );
+
+    public static Attribute templateParameter(string key, Func<Node> template)
+        => new Attribute(
+                key,                
+            (RenderFragment)(
+                (RenderTreeBuilder builder) => {
+                    Renderer.Render(builder, template());
+                }
+            )
+        );
+
+    public static Attribute templateParameter<TContext>(string key, Func<TContext, Node> template)
+        => new Attribute(
+            key,                
+            (RenderFragment<TContext>)(
+                (TContext context) =>
+                    (RenderTreeBuilder builder) => {
+                        Renderer.Render(builder, template(context));
+                    }
+                )
+            );
 
     #endregion
 

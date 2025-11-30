@@ -113,7 +113,7 @@ public static class Renderer {
         if(attribute is BindAttribute<string> bindString)
         {
             yield return new KeyValuePair<string, object>(
-                "checked", Microsoft.AspNetCore.Components.BindConverter.FormatValue(bindString.Value)                
+                "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(bindString.Value)                
             );
 
             yield return new KeyValuePair<string, object>(

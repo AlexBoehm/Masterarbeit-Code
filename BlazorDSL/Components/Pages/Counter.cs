@@ -13,10 +13,8 @@ public partial class Counter : WebComponent
                 [className("box")],
                 p("Current Count: " + currentCount),
                 div(
-                    (
-                        from name in names
-                        select p(name)
-                    ).ToArray()
+                    from name in names
+                    select p(name)
                 ),
                 button([
                     className("btn btn-primary"),

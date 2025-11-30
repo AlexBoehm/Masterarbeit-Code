@@ -9,6 +9,7 @@ static class Html {
         => new TagNode("div", attributes, inner);
 
     public static Node div(params Node[] inner) => new TagNode("div", inner);
+    public static Node div(IEnumerable<Node> inner) => new TagNode("div", inner.ToArray());
     public static Node h1(string text) => new TagNode("h1", Html.text(text));
     public static Node text(string text) => new TextNode(text);
     public static Node p(string text) => new TagNode("p", Html.text(text));

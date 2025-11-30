@@ -17,6 +17,7 @@ public partial class App : WebComponent
                     @base([href("/")]),
                     link([rel("stylesheet"), href("bootstrap/bootstrap.min.css")]),
                     link([rel("stylesheet"), href("app.css")]),
+                    link([rel("stylesheet"), href("Todo.css")]),
                     link([rel("stylesheet"), href("MainLayout.css")]),
                     link([rel("stylesheet"), href("BlazorDSL.styles.css")]),
                     link([rel("icon"), type("image/png"), href("favicon.png")]),

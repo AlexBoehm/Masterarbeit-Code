@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.Rendering;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.Web;
 using System.Runtime.CompilerServices;
 
 namespace BlazorDSL
@@ -70,5 +72,17 @@ namespace BlazorDSL
     static class HTML {
         public static KeyValuePair<string, object> Attribute(string name, object value)
             => new KeyValuePair<string, object>(name, value);
+
+        public static KeyValuePair<string, object> className(string className)
+            => Attribute("class", className);
+
+        public static KeyValuePair<string, object> OnClick(object sender, Action action)
+            => Attribute(
+                "onclick",
+                EventCallback.Factory.Create<MouseEventArgs>(
+                    sender,
+                    action
+                )
+            );
     }
 }

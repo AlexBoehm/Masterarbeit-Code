@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.Web;
 using static BlazorDSL.HTML;
 
 [Route("/counter")]
@@ -18,14 +17,9 @@ public partial class Counter : ComponentBase
                     inner
                     .p("Current count: " + currentCount)
                     .button([
-                        Attribute("class", "btn btn-primary"),
-                        Attribute(
-                            "onclick",
-                            EventCallback.Factory.Create<MouseEventArgs>(
-                                this,
-                                IncrementCount
-                            )
-                        )],
+                        className("btn btn-primary"),
+                        OnClick(this, IncrementCount)
+                        ],
                         "Click me"
                     )
                 );

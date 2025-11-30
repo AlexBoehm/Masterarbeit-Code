@@ -14,6 +14,7 @@ public partial class Counter : WebComponent
                 p("Current Count: " + currentCount),
                 div(
                     from name in names
+                    where name.StartsWith("J")
                     select p(name)
                 ),
                 button([

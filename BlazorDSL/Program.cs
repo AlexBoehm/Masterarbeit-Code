@@ -12,6 +12,8 @@ namespace BlazorDSL
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
+            builder.Services.AddSingleton<NameService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -5,12 +5,15 @@ namespace BlazorDSL.Components.Pages;
 
 [Route("/counter")]
 public partial class Counter : WebComponent
-{        
+{
+    [Inject]
+    public NameService NameService {get; set;}
+
     protected override Node Render() =>
         div(
             h1("counter"),
             Component<Greeting>(
-                [parameter("Name", "Max Mustermann")],
+                [parameter("Name", NameService.Name)],
                 text("Das ist eine Nachricht")
             ),
             div(

@@ -100,8 +100,8 @@ public class RenderFragmentNode : Node {
     }
 
 public class Attribute {
-    public string Name { get; set; }
-    public object Value { get; set; }
+    public string Name { get; private set; }
+    public object Value { get; private set; }
 
     public Attribute(string key, object value) {
         this.Name = key;

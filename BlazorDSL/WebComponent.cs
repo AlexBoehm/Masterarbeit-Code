@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace BlazorDSL; 
+
 public abstract class WebComponent : ComponentBase {
     protected override void BuildRenderTree(RenderTreeBuilder builder) {
         var node = Render();

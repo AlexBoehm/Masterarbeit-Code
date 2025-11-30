@@ -8,7 +8,11 @@ public partial class Counter : WebComponent
 {        
     protected override Node Render() =>
         div(
-            h1("counter")
+            h1("counter"),
+            div(
+                p("Current Count: " + currentCount),
+                button("Click me")
+            )
         );
 
     private int currentCount = 0;

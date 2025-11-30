@@ -1,4 +1,4 @@
-﻿namespace BlazorDSL; 
+﻿namespace BlazorDSL;
 
 public abstract class Node {
 }
@@ -22,7 +22,7 @@ public class TagNode : Node {
         Attributes = _emptyAttributes;
     }
 
-    public TagNode(string tag, Node[] inner) {
+    public TagNode(string tag, params Node[] inner) {
         Tag = tag;
         Inner = inner;
         Attributes = _emptyAttributes;

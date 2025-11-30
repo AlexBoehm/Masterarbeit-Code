@@ -51,3 +51,5 @@ public delegate (TState state, Command<TMessage> command) Update<TState, TMessag
 /// <returns></returns>
 public delegate Node View<TState, TMessage>(TState state, Dispatch<TMessage> dispatch, IComponent component);
 
+public delegate Node ExecuteView(IComponent component);
+public delegate void RenderComponent();

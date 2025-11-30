@@ -18,10 +18,17 @@ public partial class Counter : ComponentBase
                     .div(
                         [], 
                         inner => inner.ForEach(
-                            from name in names
-                            where name.StartsWith("J")
-                            select name,
-                            (inner, name) => inner.p(name)
+                            names,
+                            (inner, name) => {
+                                inner.p(name);
+
+                                if (name.StartsWith("J")) {
+                                    inner.button(
+                                        [OnClick(this, () => names.Remove(name))],
+                                        "delete"
+                                    );
+                                }
+                            }
                         )
                     )
                     .p("Current count: " + currentCount)
@@ -34,7 +41,7 @@ public partial class Counter : ComponentBase
                 );
     }
 
-    string[] names = [
+    List<string> names = [
         "George Washington",
         "John Adams",
         "Thomas Jefferson",

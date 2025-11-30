@@ -17,7 +17,7 @@ public partial class Todo : WebComponent
                     select li([className(item.Done ? "Done" : "")],
                         input([
                             type("checkbox"),
-                            bind.change.@checked(this, item.Done, newValue => item.Done = newValue)                            
+                            bind.change.@checked(item.Done, x => item.Done = x)
                         ]),
                         div(item.Text)
                     )
@@ -27,11 +27,10 @@ public partial class Todo : WebComponent
                     text($"Erledigt: {_items.Count(x => x.Done)}/{_items.Count}")
                 ),
 
-                form(
-                    [onSubmit(this, e => AddItem())],
+                form([onSubmit(AddItem)],
                     input([
                         type("text"),
-                        bind.input.@string(this, this.inputValue, newValue => this.inputValue = newValue)                        
+                        bind.input.@string(_inputValue, x => _inputValue = x)
                     ]),
                     button([type("submit")], "Hinzufügen")
                 )
@@ -44,17 +43,17 @@ public partial class Todo : WebComponent
         new TodoItem { Text = "Aufgabe 3", Done = false }
     ];
 
-    private string inputValue = "";
+    private string _inputValue = "";
 
     private void AddItem()
     {
         _items.Add(new TodoItem
         {
-            Text = inputValue,
+            Text = _inputValue,
             Done = false
         });
 
-        inputValue = "";
+        _inputValue = "";
     }
 
     public class TodoItem

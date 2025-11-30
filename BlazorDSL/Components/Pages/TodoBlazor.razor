@@ -18,7 +18,7 @@
     </div>
 
     <form @onsubmit="AddItem">
-        <input type="text" @bind-value="inputValue" />
+        <input type="text" @bind-value="_inputValue" />
         <button type="submit">Hinzufügen</button>
     </form>
 </div>
@@ -30,14 +30,14 @@
         new TodoItem { Text = "Aufgabe 3", Done = false }
     ];
 
-    string inputValue { get; set; } = "";
+    string _inputValue { get; set; } = "";
 
     void AddItem() {
         _items.Add(new TodoItem{
-            Text = inputValue,
+            Text = _inputValue,
             Done = false
         });
 
-        inputValue = "";
+        _inputValue = "";
     }
 }

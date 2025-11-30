@@ -1,4 +1,7 @@
-﻿namespace BlazorDSL;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+
+namespace BlazorDSL;
 
 static class Html {
     #region Tags
@@ -14,10 +17,16 @@ static class Html {
         => new TagNode("button", attributes, Html.text(text));
     #endregion
 
-    #region Attributs
+    #region Attributes
 
     public static Attribute className(string className)
         => new Attribute("class", className);
+
+    public static Attribute onClick(object sender, Action callback)
+        => new Attribute(
+            "onclick",
+            EventCallback.Factory.Create<MouseEventArgs>(sender, callback)
+        );
 
     #endregion
 }

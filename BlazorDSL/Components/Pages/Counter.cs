@@ -12,8 +12,9 @@ public partial class Counter : WebComponent
             div(
                 [className("box")],
                 p("Current Count: " + currentCount),
-                button(
-                    [className("btn btn-primary")],
+                button([
+                    className("btn btn-primary"),
+                    onClick(this, IncrementCount)],
                     "Click me"
                 )
             )

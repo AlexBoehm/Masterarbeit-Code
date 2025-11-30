@@ -42,5 +42,5 @@
     }
 
     private static RenderFragment RenderItem(TodoItem item)
-        => @<li>@item.Text</li>;
+        => @<input type="checkbox" @bind="item.Done" />;
 }

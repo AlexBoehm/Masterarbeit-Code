@@ -5,7 +5,7 @@ namespace BlazorDSL.Components.Pages;
 
 [Route("/counter")]
 public partial class Counter : WebComponent
-{
+{        
     protected override Node Render() =>
         div(
             h1("counter"),
@@ -22,7 +22,7 @@ public partial class Counter : WebComponent
                                 [onClick(this, () => names.Remove(name))],
                                 "delete"
                             ),
-                            () => p("")
+                            () => empty()
                         )
                     )
                 ),

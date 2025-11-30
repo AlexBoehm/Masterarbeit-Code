@@ -24,6 +24,8 @@ static class Html {
     public static Node Cond(bool condition, Func<Node> nodesTrue, Func<Node> nodeFalse)
         => new CondNode(condition, condition ? nodesTrue() : nodeFalse());
 
+    public static Node empty() => EmptyNode.Instance;
+
     #region Attributes
 
     public static Attribute className(string className)

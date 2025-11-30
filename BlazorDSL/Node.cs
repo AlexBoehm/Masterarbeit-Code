@@ -1,4 +1,6 @@
-﻿namespace BlazorDSL;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace BlazorDSL;
 
 public abstract class Node {
     protected static Attribute[] _emptyAttributes = [];
@@ -66,15 +68,24 @@ public class EmptyNode : Node {
 public class ComponentNode : Node {
     public Type Type { get; private set; }
     public Attribute[] Attributes { get; private set; }
+    public IComponentRenderMode RenderMode {get; private set; }
 
     public ComponentNode(Type type) {
         Type = type;
         Attributes = _emptyAttributes;
+        RenderMode = null;
     }
 
     public ComponentNode(Type type, Attribute[] attributes) {
         Type = type;
         Attributes = attributes;
+        RenderMode = null;
+    }
+
+    public ComponentNode(Type type, Attribute[] attributes, IComponentRenderMode renderMode) {
+        Type = type;
+        Attributes = attributes;
+        RenderMode = renderMode;
     }
 }
 

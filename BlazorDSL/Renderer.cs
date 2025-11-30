@@ -76,13 +76,28 @@ static class Renderer {
     private static int RenderComponentNode(RenderTreeBuilder builder, int sequenceNumber, ComponentNode n) {
         builder.OpenRegion(sequenceNumber);
         builder.OpenComponent(0, n.Type);
-        AddAttributes(1, builder, n.Attributes);
+
+        if(n.RenderMode != null)
+            builder.AddComponentRenderMode(n.RenderMode);
+
+        AddComponentAttributes(1, builder, n.Attributes, out var nextSequenceNumber);
         builder.CloseComponent();
         builder.CloseRegion();
-        return sequenceNumber + 1;
+        return nextSequenceNumber;
     }
 
-    private static void AddAttributes(int sequenceNumber, RenderTreeBuilder builder, Attribute[] attributes) {
+    private static void AddComponentAttributes(int sequenceNumber, RenderTreeBuilder builder, Attribute[] attributes, out int nextSequenceNumber) {
+        nextSequenceNumber = sequenceNumber;
+
+        foreach (var item in attributes)
+        {
+            builder.AddComponentParameter(nextSequenceNumber, item.Name, item.Value);
+            nextSequenceNumber++;
+        }
+    }
+
+    private static void AddAttributes(int sequenceNumber, RenderTreeBuilder builder, Attribute[] attributes)
+    {
         builder.AddMultipleAttributes(
             sequenceNumber,
             from attribute in attributes

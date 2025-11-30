@@ -9,7 +9,9 @@ public partial class Counter : WebComponent
     protected override Node Render() =>
         div(
             h1("counter"),
-            Component<Greeting>(),
+            Component<Greeting>(
+                [parameter("Name", "Max Mustermann")]
+            ),
             div(
                 [className("box")],
                 p("Current Count: " + currentCount),

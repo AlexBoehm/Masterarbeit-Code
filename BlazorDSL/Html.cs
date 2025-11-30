@@ -37,12 +37,18 @@ static class Html {
             EventCallback.Factory.Create<MouseEventArgs>(sender, callback)
         );
 
+    public static Attribute parameter(string name, object value)
+        => new Attribute(name, value);
+
     #endregion
 
     #region Components
 
         public static Node Component<TComponent>()
             => new ComponentNode(typeof(TComponent));
+
+        public static Node Component<TComponent>(Attribute[] parameters)
+            => new ComponentNode(typeof(TComponent), parameters);
 
     #endregion
 }
